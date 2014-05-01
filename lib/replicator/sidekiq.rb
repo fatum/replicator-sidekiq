@@ -1,4 +1,5 @@
 require "replicator/sidekiq/version"
+require 'sidekiq'
 
 module Replicator
   module Sidekiq

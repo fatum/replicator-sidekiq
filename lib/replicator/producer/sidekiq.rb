@@ -9,12 +9,12 @@ module Replicator
       end
 
       def call(action, state)
-        @consumers.each do |c|
+        @consumers.each do |consumer|
           ::Sidekiq::Client.
             push(
-              'class' => 'Replicator::Sidekiq::Worker',
-              'args' => [action, state],
-              'queue' => "#{@collection}_#{c}")
+              'class' => "Replicator::Sidekiq::Worker#{consumer.to_s.camelcase}",
+              'args' => [consumer, action, state],
+              'queue' => "replicator-#{@collection}-#{consumer}")
         end
       end
     end

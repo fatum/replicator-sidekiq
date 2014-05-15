@@ -1,3 +1,5 @@
+require 'replicator/sidekiq/worker'
+
 module Replicator
   class Consumer
     class Sidekiq
@@ -6,6 +8,7 @@ module Replicator
       end
 
       def call(consumer)
+        Replicator::Sidekiq::Worker.create consumer
       end
     end
   end

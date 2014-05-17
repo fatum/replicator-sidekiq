@@ -9,8 +9,6 @@ module Replicator
           def perform(_consumer, _action, _state)
             packet = Replicator::Packet.new(action: _action, state: _state)
             Replicator.consumers[_consumer.to_sym].process(packet)
-
-            p "Consumed: #{_consumer}: #{_action} - #{_state}"
           end
         end
 

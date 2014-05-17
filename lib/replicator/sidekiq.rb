@@ -5,6 +5,7 @@ require 'replicator'
 
 require 'replicator/consumer/sidekiq'
 require 'replicator/producer/sidekiq'
+require 'replicator/packet'
 
 module Replicator
   module Sidekiq

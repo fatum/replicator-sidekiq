@@ -7,7 +7,7 @@ module Replicator
           sidekiq_options queue_name: "replicator-#{consumer.collection}-#{consumer.name}"
 
           def perform(_consumer, _action, _state)
-            packet = Replicator::Packet.new(action: _action, state: _state)
+            packet = Replicator.packet.new(action: _action, state: _state)
             Replicator.consumers[_consumer.to_sym].process(packet)
           end
         end

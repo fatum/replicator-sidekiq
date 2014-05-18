@@ -6,19 +6,35 @@ TODO: Write a gem description
 
 Add this line to your application's Gemfile:
 
-    gem 'replicator-sidekiq'
+    gem 'replicator', github: 'fatum/replicator'
+    gem 'replicator-sidekiq', github: 'fatum/replicator-sidekiq'
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install replicator-sidekiq
-
 ## Usage
 
-TODO: Write usage instructions here
+Create comsumer
+
+```ruby
+  class DataConsumer
+    include Replicator::Consumer::Mixin
+
+    consume :channel do
+      name :service
+      adapter :sidekiq
+
+      receive proc { |packet|
+        ## handle state changes
+      }
+    end
+  end
+```
+
+Listen consumer queue
+
+`bundle exec sidekiq -q replicator-service-channel`
 
 ## Contributing
 

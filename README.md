@@ -1,6 +1,6 @@
 # Replicator::Sidekiq
 
-TODO: Write a gem description
+Sidekiq adapter for [replicator](http://github.com/fatum/replicator)
 
 ## Installation
 

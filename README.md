@@ -25,7 +25,7 @@ Create comsumer
       name :service
       adapter :sidekiq
 
-      receive proc { |packet|
+      receiver proc { |packet|
         ## handle state changes
       }
     end
@@ -34,7 +34,7 @@ Create comsumer
 
 Listen consumer queue
 
-`bundle exec sidekiq -q replicator-service-channel`
+`bundle exec sidekiq -q replicator-channel-service`
 
 ## Contributing
 
